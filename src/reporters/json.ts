@@ -8,7 +8,7 @@ import type { QualityGatesReport } from '../types.js';
 
 export class JSONReporter {
   async report(report: QualityGatesReport, outputDir: string, projectRoot: string): Promise<void> {
-    const outputPath = resolve(projectRoot, outputDir, 'quality-gates-report.json');
+    const outputPath = resolve(projectRoot, outputDir, 'gate-agent-report.json');
 
     // Ensure output directory exists
     await mkdir(dirname(outputPath), { recursive: true });

@@ -42,7 +42,7 @@ reporting:
     # - html    # Visual HTML dashboard (coming soon)
 
   # Output paths (relative to project root)
-  outputDir: .quality-gates
+  outputDir: .gate-agent
 
 # Fail fast - stop on first failing gate
 failFast: false

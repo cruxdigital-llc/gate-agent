@@ -1,11 +1,11 @@
 {
-  "name": "quality-gates",
+  "name": "gate-agent",
   "version": "0.1.0",
   "description": "Configurable CLI tool for running quality gates across JavaScript/TypeScript projects",
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "quality-gates": "./dist/cli.js"
+    "gate-agent": "./dist/cli.js"
   },
   "files": [
     "dist",

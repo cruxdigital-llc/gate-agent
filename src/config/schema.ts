@@ -55,7 +55,7 @@ const gatesSchema = z.object({
 
 const reportingSchema = z.object({
   formats: z.array(z.enum(['terminal', 'json', 'html'])).default(['terminal']),
-  outputDir: z.string().default('.quality-gates'),
+  outputDir: z.string().default('.gate-agent'),
 });
 
 export const configSchema = z.object({

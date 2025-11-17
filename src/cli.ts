@@ -22,7 +22,7 @@ const __dirname = dirname(__filename);
 const program = new Command();
 
 program
-  .name('quality-gates')
+  .name('gate-agent')
   .description('Configurable CLI tool for running quality gates')
   .version('0.1.0');
 
@@ -30,7 +30,7 @@ program
 program
   .command('run')
   .description('Run quality gates')
-  .option('-c, --config <path>', 'Path to quality-gates.yml', 'quality-gates.yml')
+  .option('-c, --config <path>', 'Path to gate-agent.yml', 'gate-agent.yml')
   .option('--cwd <path>', 'Working directory', process.cwd())
   .action(async (options: { config: string; cwd: string }) => {
     try {
@@ -40,8 +40,8 @@ program
       const configPath = await ConfigLoader.findConfig(projectRoot);
 
       if (!configPath) {
-        console.error('Error: No quality-gates.yml configuration found.');
-        console.error('Run "quality-gates init" to create one.');
+        console.error('Error: No gate-agent.yml configuration found.');
+        console.error('Run "gate-agent init" to create one.');
         process.exit(1);
       }
 
@@ -92,12 +92,12 @@ program
 // Init command
 program
   .command('init')
-  .description('Initialize quality-gates.yml configuration file')
+  .description('Initialize gate-agent.yml configuration file')
   .option('--cwd <path>', 'Working directory', process.cwd())
   .action(async (options: { cwd: string }) => {
     try {
       const projectRoot = resolve(options.cwd);
-      const targetPath = resolve(projectRoot, 'quality-gates.yml');
+      const targetPath = resolve(projectRoot, 'gate-agent.yml');
 
       // Check if config already exists
       const existingConfig = await ConfigLoader.findConfig(projectRoot);
@@ -107,14 +107,14 @@ program
       }
 
       // Copy template
-      const templatePath = resolve(__dirname, '..', 'templates', 'quality-gates.yml');
+      const templatePath = resolve(__dirname, '..', 'templates', 'gate-agent.yml');
       await mkdir(dirname(targetPath), { recursive: true });
       await copyFile(templatePath, targetPath);
 
-      console.log(`Created quality-gates.yml at: ${targetPath}`);
+      console.log(`Created gate-agent.yml at: ${targetPath}`);
       console.log('\nNext steps:');
-      console.log('1. Edit quality-gates.yml to configure your quality gates');
-      console.log('2. Run "quality-gates run" to execute quality gates');
+      console.log('1. Edit gate-agent.yml to configure your quality gates');
+      console.log('2. Run "gate-agent run" to execute quality gates');
     } catch (error) {
       console.error('Error:', error instanceof Error ? error.message : 'Unknown error');
       process.exit(2);

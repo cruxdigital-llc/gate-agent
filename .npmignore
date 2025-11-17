@@ -6,13 +6,13 @@ src/
 tsconfig.json
 tsup.config.ts
 vitest.config.ts
-quality-gates.yml
+gate-agent.yml
 
 # Documentation
 CONTRIBUTING.md
 
 # Development
-.quality-gates/
+.gate-agent/
 coverage/
 
 # Git

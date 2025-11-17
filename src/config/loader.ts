@@ -27,7 +27,7 @@ export class ConfigLoader {
         if ('code' in error && error.code === 'ENOENT') {
           throw new Error(
             `Configuration file not found: ${configPath}\n` +
-              'Run "quality-gates init" to create a configuration file.'
+              'Run "gate-agent init" to create a configuration file.'
           );
         }
         throw new Error(`Failed to load configuration: ${error.message}`);
@@ -37,10 +37,10 @@ export class ConfigLoader {
   }
 
   /**
-   * Find quality-gates.yml in the current directory or parent directories
+   * Find gate-agent.yml in the current directory or parent directories
    */
   static async findConfig(startDir: string = process.cwd()): Promise<string | null> {
-    const configNames = ['quality-gates.yml', 'quality-gates.yaml', '.quality-gates.yml'];
+    const configNames = ['gate-agent.yml', 'gate-agent.yaml', '.gate-agent.yml'];
     let currentDir = resolve(startDir);
 
     // Search up to root

@@ -1,4 +1,4 @@
-# Quality Gates
+# Gate Agent
 
 A configurable CLI tool for running quality gates across JavaScript/TypeScript projects. Orchestrate linting, formatting, type checking, testing, and security scanning with a single command.
 
@@ -14,24 +14,24 @@ A configurable CLI tool for running quality gates across JavaScript/TypeScript p
 
 ```bash
 # Global installation
-npm install -g quality-gates
+npm install -g gate-agent
 
 # Or as a dev dependency
-npm install --save-dev quality-gates
+npm install --save-dev gate-agent
 ```
 
 ## Quick Start
 
 1. Initialize configuration:
 ```bash
-quality-gates init
+gate-agent init
 ```
 
-2. Edit `quality-gates.yml` to enable/disable gates
+2. Edit `gate-agent.yml` to enable/disable gates
 
 3. Run quality gates:
 ```bash
-quality-gates run
+gate-agent run
 ```
 
 ## Quality Gates
@@ -47,7 +47,7 @@ quality-gates run
 
 ## Configuration
 
-Create a `quality-gates.yml` file in your project root:
+Create a `gate-agent.yml` file in your project root:
 
 ```yaml
 gates:
@@ -91,7 +91,7 @@ reporting:
     # - html    # Visual HTML dashboard
 
   # Output paths (relative to project root)
-  outputDir: .quality-gates
+  outputDir: .gate-agent
 
 # Fail fast - stop on first failing gate
 failFast: false
@@ -99,29 +99,29 @@ failFast: false
 
 ## CLI Commands
 
-### `quality-gates run`
+### `gate-agent run`
 
 Run all enabled quality gates.
 
 ```bash
-quality-gates run
+gate-agent run
 
 # Use custom config path
-quality-gates run --config path/to/config.yml
+gate-agent run --config path/to/config.yml
 
 # Use custom working directory
-quality-gates run --cwd /path/to/project
+gate-agent run --cwd /path/to/project
 ```
 
-### `quality-gates init`
+### `gate-agent init`
 
-Create a `quality-gates.yml` configuration file.
+Create a `gate-agent.yml` configuration file.
 
 ```bash
-quality-gates init
+gate-agent init
 
 # Initialize in specific directory
-quality-gates init --cwd /path/to/project
+gate-agent init --cwd /path/to/project
 ```
 
 ## Exit Codes
@@ -148,8 +148,8 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-      - run: npm install -g quality-gates
-      - run: quality-gates run
+      - run: npm install -g gate-agent
+      - run: gate-agent run
 ```
 
 ### GitLab CI
@@ -159,11 +159,11 @@ quality-gates:
   image: node:20
   script:
     - npm ci
-    - npm install -g quality-gates
-    - quality-gates run
+    - npm install -g gate-agent
+    - gate-agent run
   artifacts:
     reports:
-      json: .quality-gates/quality-gates-report.json
+      json: .gate-agent/gate-agent-report.json
 ```
 
 ## Prerequisites
@@ -223,7 +223,7 @@ Summary:
 
 ### JSON Output
 
-JSON reports are written to `.quality-gates/quality-gates-report.json`:
+JSON reports are written to `.gate-agent/gate-agent-report.json`:
 
 ```json
 {

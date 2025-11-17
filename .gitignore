@@ -18,7 +18,7 @@ yarn-error.log*
 
 # Testing
 coverage/
-.quality-gates/
+.gate-agent/
 
 # Editor
 .vscode/

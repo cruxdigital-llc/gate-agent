@@ -156,7 +156,7 @@ function escapeHtml(text: string): string {
 
 export class HTMLReporter {
   async report(report: QualityGatesReport, outputDir: string, projectRoot: string): Promise<void> {
-    const outputPath = resolve(projectRoot, outputDir, 'quality-gates-report.html');
+    const outputPath = resolve(projectRoot, outputDir, 'gate-agent-report.html');
 
     // Ensure output directory exists
     await mkdir(dirname(outputPath), { recursive: true });

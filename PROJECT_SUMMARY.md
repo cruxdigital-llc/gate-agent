@@ -1,4 +1,4 @@
-# Quality Gates CLI Tool - Project Summary
+# Gate Agent CLI Tool - Project Summary
 
 ## Overview
 
@@ -9,8 +9,8 @@ Successfully built a configurable command-line tool for running quality gates ac
 ### Core Features
 
 1. **CLI Commands**
-   - `quality-gates run` - Execute quality gates
-   - `quality-gates init` - Scaffold configuration file
+   - `gate-agent run` - Execute quality gates
+   - `gate-agent init` - Scaffold configuration file
 
 2. **Quality Gates (6 total)**
    - ESLint - Code quality and style checking
@@ -39,7 +39,7 @@ Successfully built a configurable command-line tool for running quality gates ac
 ## Project Structure
 
 ```
-quality-gates/
+gate-agent/
 ├── src/
 │   ├── cli.ts                  # CLI entry point with commander
 │   ├── index.ts                # Public API exports
@@ -66,7 +66,7 @@ quality-gates/
 │   └── utils/
 │       └── command.ts          # Command execution utilities
 ├── templates/
-│   └── quality-gates.yml       # Default configuration template
+│   └── gate-agent.yml          # Default configuration template
 ├── dist/                       # Built output (generated)
 ├── package.json
 ├── tsconfig.json
