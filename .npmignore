@@ -1,0 +1,20 @@
+# Source files
+src/
+*.test.ts
+
+# Config files
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+quality-gates.yml
+
+# Documentation
+CONTRIBUTING.md
+
+# Development
+.quality-gates/
+coverage/
+
+# Git
+.git/
+.gitignore
