@@ -57,16 +57,21 @@ export const osvScannerGate: GateRunner = {
       return {
         name: this.name,
         status: 'skipped',
-        message: 'osv-scanner not installed. Install with: go install github.com/google/osv-scanner/cmd/osv-scanner@latest',
+        message:
+          'osv-scanner not installed. Install with: go install github.com/google/osv-scanner/cmd/osv-scanner@latest',
         duration: 0,
       };
     }
 
     // Run osv-scanner with JSON output
-    const result = await runCommand('osv-scanner', ['--format', 'json', '--lockfile', hasLockFile], {
-      cwd: projectRoot,
-      reject: false,
-    });
+    const result = await runCommand(
+      'osv-scanner',
+      ['--format', 'json', '--lockfile', hasLockFile],
+      {
+        cwd: projectRoot,
+        reject: false,
+      }
+    );
 
     // OSV-scanner exits with code 0 if no vulnerabilities, 1 if vulnerabilities found
     if (result.exitCode === 0) {

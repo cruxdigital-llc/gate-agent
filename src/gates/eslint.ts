@@ -60,14 +60,17 @@ export const eslintGate: GateRunner = {
     }
 
     // Run ESLint with JSON output
-    const result = await runCommand(
-      'npx',
-      ['eslint', '.', '--format', 'json', '--max-warnings', String(gateConfig.maxWarnings)],
-      {
-        cwd: projectRoot,
-        reject: false,
-      }
-    );
+    const args = ['eslint', '.', '--format', 'json'];
+
+    // Only add --max-warnings if it's not -1 (unlimited)
+    if (gateConfig.maxWarnings >= 0) {
+      args.push('--max-warnings', String(gateConfig.maxWarnings));
+    }
+
+    const result = await runCommand('npx', args, {
+      cwd: projectRoot,
+      reject: false,
+    });
 
     // Parse ESLint JSON output
     const eslintResults = parseJSON<ESLintResult[]>(result.stdout);

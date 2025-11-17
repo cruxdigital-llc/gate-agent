@@ -23,6 +23,7 @@ npm install --save-dev gate-agent
 ## Quick Start
 
 1. Initialize configuration:
+
 ```bash
 gate-agent init
 ```
@@ -30,6 +31,7 @@ gate-agent init
 2. Edit `gate-agent.yml` to enable/disable gates
 
 3. Run quality gates:
+
 ```bash
 gate-agent run
 ```
@@ -55,7 +57,7 @@ gates:
   eslint:
     enabled: true
     maxErrors: 0
-    maxWarnings: -1  # -1 means unlimited
+    maxWarnings: -1 # -1 means unlimited
 
   # Prettier - Code formatting
   prettier:
@@ -86,8 +88,8 @@ gates:
 # Reporting configuration
 reporting:
   formats:
-    - terminal  # Colorized terminal output
-    - json      # Machine-readable JSON
+    - terminal # Colorized terminal output
+    - json # Machine-readable JSON
     # - html    # Visual HTML dashboard
 
   # Output paths (relative to project root)

@@ -48,14 +48,10 @@ export const prettierGate: GateRunner = {
     }
 
     // Run Prettier check
-    const result = await runCommand(
-      'npx',
-      ['prettier', '--check', '.', '--ignore-unknown'],
-      {
-        cwd: projectRoot,
-        reject: false,
-      }
-    );
+    const result = await runCommand('npx', ['prettier', '--check', '.', '--ignore-unknown'], {
+      cwd: projectRoot,
+      reject: false,
+    });
 
     if (result.exitCode === 0) {
       return {
@@ -71,9 +67,13 @@ export const prettierGate: GateRunner = {
     const unformattedFiles: string[] = [];
 
     for (const line of lines) {
-      // Prettier outputs checking lines and then unformatted file paths
-      if (!line.startsWith('Checking') && !line.includes('[warn]') && line.trim()) {
-        unformattedFiles.push(line.trim());
+      // Prettier outputs [warn] lines for unformatted files
+      if (line.includes('[warn]')) {
+        // Extract filename after [warn]
+        const filename = line.replace('[warn]', '').trim();
+        if (filename && !filename.includes('Code style issues')) {
+          unformattedFiles.push(filename);
+        }
       }
     }
 

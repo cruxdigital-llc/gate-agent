@@ -6,7 +6,7 @@ gates:
   eslint:
     enabled: true
     maxErrors: 0
-    maxWarnings: -1  # -1 means unlimited
+    maxWarnings: -1 # -1 means unlimited
 
   # Prettier - Code formatting
   prettier:
@@ -37,8 +37,8 @@ gates:
 # Reporting configuration
 reporting:
   formats:
-    - terminal  # Colorized terminal output
-    - json      # Machine-readable JSON
+    - terminal # Colorized terminal output
+    - json # Machine-readable JSON
     # - html    # Visual HTML dashboard (coming soon)
 
   # Output paths (relative to project root)
